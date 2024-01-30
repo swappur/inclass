@@ -23,7 +23,45 @@ asm_main:
         enter   0,0               ; setup routine
         pusha
 
-		; TODO: add code
+	; dump_regs 1               ; TODO: add code
+        ; call print_nl
+
+        ; mov eax, 0              ; Making EAX = 0
+        ; mov ah, 18              ; AH = 18 (base 10)
+        ; mov al, 0BAH            ; AL = 0xBA (base 16)
+        ; dump_regs 2
+
+        ; mov eax, 0BEEFCAFEH
+        ; dump_regs 3
+        ; call print_nl
+
+        ; mov eax, 3
+        ; mov ebx, 4
+        ; add eax, ebx
+        ; dump_regs 1
+
+        ; mov eax, 40
+        ; dump_regs 1
+        ; mov ebx, 2
+        ; dump_regs 2
+        ; add eax, ebx
+        ; dump_regs 3
+
+        ; mov eax, 10
+        ; mov ebx, 4
+        ; sub eax, ebx
+        ; dump_regs 1
+
+        mov eax, 16
+        mov ebx, 4
+        sub eax, ebx
+        dump_regs 1
+        
+        call print_nl
+
+        mov ecx, eax
+        inc ecx
+        dump_regs 2
 
         popa
         mov     eax, 0            ; return back to C
