@@ -52,16 +52,17 @@ asm_main:
         ; sub eax, ebx
         ; dump_regs 1
 
-        mov eax, 16
-        mov ebx, 4
-        sub eax, ebx
         dump_regs 1
-        
-        call print_nl
-
-        mov ecx, eax
-        inc ecx
+        mov eax, 255
         dump_regs 2
+        sub eax, 16
+        dump_regs 3
+        
+        ; call print_nl
+
+        ; mov ecx, eax
+        ; inc ecx
+        ; dump_regs 2
 
         popa
         mov     eax, 0            ; return back to C
