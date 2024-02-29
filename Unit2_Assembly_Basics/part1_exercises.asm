@@ -12,16 +12,20 @@
 
 ; initialized data
 segment .data
+num dd 4
 
 ; uninitialized data
 segment .bss
-
+numTwo resd 1
 
 segment .text
         global  asm_main
 asm_main:
         enter   0,0               ; setup routine
         pusha
+
+        mov eax, [num]
+        call print_int
 
 	; dump_regs 1               ; TODO: add code
         ; call print_nl
@@ -52,11 +56,11 @@ asm_main:
         ; sub eax, ebx
         ; dump_regs 1
 
-        dump_regs 1
-        mov eax, 255
-        dump_regs 2
-        sub eax, 16
-        dump_regs 3
+        ; dump_regs 1
+        ; mov eax, 255
+        ; dump_regs 2
+        ; sub eax, 16
+        ; dump_regs 3
         
         ; call print_nl
 

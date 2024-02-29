@@ -43,10 +43,11 @@ asm_main:
         ; shr eax, 4
         ; call print_int
 
-        mov eax, 4
-        mov ebx, 2
-        test eax, ebx
+        mov eax, 0BAH
+        mov ebx, 032H
         dump_regs 1
+        OR eax, ebx
+        dump_regs 2
 
         popa
         mov     eax, 0            ; return back to C

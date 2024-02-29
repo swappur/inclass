@@ -18,16 +18,16 @@ age equ 30              ; symbols
 segment .data
 ; fav_color db "purple", 0
 ; fav_char db "A"
-; num dd 83
+num dq 5
 hello db "Hello World!", 0
 num_prompt db "Enter a number: ", 0
-char_prompt db "Enter a character: ", 0
+char_prompt db "AB", 0
 chars times 5 db "Z"
 
 ; uninitialized data
 segment .bss
 ; fav_num resd 1
-num resd 1
+; num resd 1
 char resb 1
 
 segment .text
@@ -47,10 +47,10 @@ asm_main:
         ; mov ah, [letter]
         ; call print_char
 
-        ; mov eax, [num]
-        ; call print_int
-        ; call print_nl
-        ; call print_char
+        mov eax, [num]
+        call print_int
+        call print_nl
+        call print_char
 
         ; dump_mem 1, fav_color, 0
 
@@ -82,7 +82,10 @@ asm_main:
         ; call read_int
         ; mov dword [num], eax
 
-        dump_mem 1, chars + 3, 0
+        ; dump_mem 1, chars + 3, 0
+
+        ; mov eax, char_prompt
+        dump_regs 1
 
         popa
         mov     eax, 0            ; return back to C
